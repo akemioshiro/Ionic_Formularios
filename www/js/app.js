@@ -22,8 +22,32 @@ angular.module('starter', ['ionic'])
     }
   });
 })
-.controller("formController", function($scope){
-  $scope.form = function(){
-    console.log("teste");
+.controller("AppController", function($scope,$ionicModal){
+  $scope.contatos = [
+    {
+      nome:"Camila",
+      email:"camila@gmail.com"
+    },
+    {
+      nome:"Paulo",
+      email:"paulo@gmail.com"
+    },
+    {
+      nome:"Joaquim",
+      email:"juca@gmail.com"
+    }
+  ];
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope
+  }).then(function(modal){
+    $scope.modal = modal;
+  });
+  $scope.addContato = function(contato){
+    $scope.contatos.push({nome: contato.nome, email:contato.email});
+    contato.nome = "";
+    contato.email="";
+    $scope.modal.hide();
   };
+
 })

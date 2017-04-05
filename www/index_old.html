@@ -34,21 +34,50 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane ng-controller="AppController">
+    <ion-pane>
 
       <ion-header-bar class="bar-calm">
         <h1 class="title">Formulário</h1>
-        <button class="button button-icon ion-compose" ng-click="modal.show()"></button>
       </ion-header-bar>
 
 
       <!-- corpo da aplicação -->
       <ion-content class="has-header has-footer">
-        <ion-list>
-          <ion-item ng-repeat="contato in contatos">
-            {{contato.nome}} - {{contato.email}}
-          </ion-item>
-        </ion-list>
+          <div class="list list-inset">
+            <label class="item item-input">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="text" name="" placeholder="busca">
+            </label>
+          </div>
+
+          <div class="list list-inset">
+            <label class="item item-input">
+              <input type="text" name="" placeholder="Nome">
+            </label>
+            <label class="item item-input">
+              <input type="text" name="" placeholder="Sobrenome">
+            </label>
+            <label class="item item-input">
+              <textarea placeholder="Comentario"></textarea>
+            </label>
+            <button class="button button-full button-royal">Publicar</button>
+          </div>
+
+          <div class="list" ng-controller="formController">
+            <label class="item item-input item-stacked-label">
+              <span class="input-label" >Nome</span>
+              <input type="text" name="" placeholder="Paulo" ng-model="nome">            
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">Sobrenome</span>
+              <input type="text" name="" placeholder="Santos" ng-model="sobrenome">            
+            </label>  
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">E-mail</span>
+              <input type="text" name="" placeholder="paulo@uol.com.br" ng-model="email">            
+            </label>   
+            <button class="button button-full button-royal" ng-click="form">Cadastrar</button>        
+          </div>
       </ion-content>
 
 
@@ -64,28 +93,5 @@
       </ion-footer-bar>
 
     </ion-pane>
-
-    <script id="templates/modal.html" type="text/ng-template">
-      <ion-modal-view>
-        <ion-header-bar class="bar bar-header bar-positive">
-          <h1 class="title">Novo contato</h1>
-          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancelar</button>
-        </ion-header-bar>
-        <ion-content class="padding">
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Nome</span>
-              <input type="text" ng-model="Contato.nome">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">E-mail</span>
-              <input type="text" ng-model="Contato.email">
-            </label>            
-            <button class="button button-full button-positive" ng-click="addContato(Contato)">Adicionar</button>
-          </div>
-        </ion-content>
-      </ion-modal-view>
-    </script>
-
   </body>
 </html>
